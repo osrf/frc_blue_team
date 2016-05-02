@@ -18,8 +18,12 @@
 #ifndef _GAZEBO_FRC_BLUE_ROBOT_PLUGIN_HH_
 #define _GAZEBO_FRC_BLUE_ROBOT_PLUGIN_HH_
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow"
+#pragma GCC diagnostic ignored "-Wpedantic"
 #include <ros/ros.h>
 #include <sensor_msgs/Joy.h>
+#pragma GCC diagnostic pop
 #include <sdf/sdf.hh>
 #include "gazebo/common/Plugin.hh"
 #include "gazebo/common/UpdateInfo.hh"

@@ -22,7 +22,7 @@ include_directories(${IGNITION-MATH_INCLUDE_DIRS})
 link_directories(${IGNITION-MATH_LIBRARY_DIRS})
 
 ## Find catkin and any catkin packages
-#find_package(catkin REQUIRED COMPONENTS roscpp sensor_msgs)
+find_package(catkin REQUIRED COMPONENTS roscpp sensor_msgs)
 
 #################################################
 # Macro to check for visibility capability in compiler

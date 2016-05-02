@@ -207,10 +207,17 @@ if(NOT DEFINED USE_UPSTREAM_CFLAGS OR USE_UPSTREAM_CFLAGS)
 endif()
 
 # Check if warning options are avaliable for the compiler and return WARNING_CXX_FLAGS variable
-filter_valid_compiler_warnings(-Wall -Wextra -Wno-long-long
-  -Wno-unused-value -Wno-unused-value -Wno-unused-value -Wno-unused-value
-  -Wfloat-equal -Wshadow -Winit-self -Wswitch-default
-  -Wmissing-include-dirs -pedantic)
+filter_valid_compiler_warnings(-Wall
+  -Wextra
+  -Wno-long-long
+  -Wno-unused-value
+  -Wfloat-equal
+  -Wshadow
+  -Winit-self
+  -Wswitch-default
+  -Wmissing-include-dirs
+  -pedantic
+)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}${WARNING_CXX_FLAGS}")
 
 #################################################
@@ -279,7 +286,7 @@ else (build_errors)
     add_subdirectory(src)
     add_subdirectory(include)
     add_subdirectory(worlds)
-    add_subdirectory(test)
+    # add_subdirectory(test)
   endif (BUILD_IGNITION)
 
   ########################################
