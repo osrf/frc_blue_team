@@ -1,5 +1,5 @@
 <launch>
   <arg name="model_name" default="model"/>
   <!-- Spawn a robot into Gazebo -->
-  <node name="spawn_sdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find frc_blue_team)/models/$(arg model_name).sdf -sdf -z 1 -model $(arg model_name)" />
+  <node name="spawn_sdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find frc_blue_team)/models/$(arg model_name)/model.sdf -sdf -z 0 -model $(arg model_name)" />
 </launch>

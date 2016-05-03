@@ -623,6 +623,8 @@
     </joint>
     <static>0</static>
     <allow_auto_disable>1</allow_auto_disable>
-    <plugin name='FRCBlueRobotPlugin' filename='libFRCBlueRobotPlugin.so'/>
+    <plugin name='FRCBlueRobotPlugin' filename='libFRCBlueRobotPlugin.so'>
+      <topic>/blue/joy1</topic>
+    </plugin>
   </model>
 </sdf>
