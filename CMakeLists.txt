@@ -37,3 +37,11 @@ install(TARGETS ${frc_blue_robot_plugin_name}
 # Install all the world files
 install(DIRECTORY worlds/
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/worlds)
+
+# Install all the model files
+install(DIRECTORY models/
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/models)
+
+# Install all the launch files
+install(DIRECTORY launch/
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch)
