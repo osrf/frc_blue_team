@@ -34,6 +34,19 @@ install(TARGETS ${frc_blue_robot_plugin_name}
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin)
 
+# Create the libFRCBlueCameraPlugin.so library.
+set(frc_blue_camera_plugin_name FRCBlueCameraPlugin)
+add_library(${frc_blue_camera_plugin_name} src/FRCBlueCameraPlugin.cc)
+target_link_libraries(${frc_blue_camera_plugin_name}
+  ${GAZEBO_LIBRARIES}
+  ${roscpp_LIBRARIES}
+  ${sensor_msgs_LIBRARIES}
+)
+install(TARGETS ${frc_blue_camera_plugin_name}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin)
+
 # Install all the world files
 set(world_files worlds/FRCblue.world)
 if (${gazebo_VERSION_MAJOR} GREATER 6)
