@@ -69,14 +69,6 @@ void FRCBlueCameraPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   this->n = new ros::NodeHandle();
   this->sub = this->n->subscribe(this->topic, 1000,
       &FRCBlueCameraPlugin::OnData, this);
-
-/*  this->node.reset();
-  this->node = transport::NodePtr(new transport::Node());
-  this->node->Init(this->model->GetWorld()->GetName());
-
-  this->factoryPub =
-    this->node->Advertise<msgs::Factory>("~/factory");
-  this->factoryPub->WaitForConnection();*/
 }
 
 /////////////////////////////////////////////////
@@ -87,67 +79,57 @@ void FRCBlueCameraPlugin::Update(const common::UpdateInfo & /*_info*/)
   if (this->joyMsg.axes.empty())
     return;
 
+  double posStep = 0.001;
+  double rotStep = 0.0005;
+
+  // right joy left right
+  double pan = this->joyMsg.axes.at(2);
+  // right joy up down
+  double tilt = -this->joyMsg.axes.at(3);
+  // l1
+  double left = this->joyMsg.buttons.at(10);
+  // r1
+  double right = this->joyMsg.buttons.at(11);
+  // l2
+  double down = this->joyMsg.buttons.at(8);
+  // r2
+  double up = this->joyMsg.buttons.at(9);
+
+  double y = (left-right) * posStep;
+  double z = (up-down) * posStep;
+
+  double yaw = pan * rotStep;
+  double pitch = tilt * rotStep;
+
+
   // Process last message.
-  ignition::math::Vector3d targetLinVel(this->joyMsg.axes.at(1), 0.0, 0.0);
-  math::Vector3 targetAngVel(0.0, 0.0, this->joyMsg.axes.at(0));
+  ignition::math::Vector3d yPos(0.0, y, 0);
+  ignition::math::Vector3d zPos(0.0, 0, z);
+
+  ignition::math:: Quaterniond yawRot(0.0, 0.0, yaw);
+  ignition::math:: Quaterniond pitchRot(0.0, pitch, 0.0);
 
   auto myPose = this->model->GetWorldPose().Ign();
 
-  // Get linear velocity in world frame
-  ignition::math::Vector3d linearVel = myPose.Rot().RotateVector(
-      targetLinVel * ignition::math::Vector3d::UnitX);
+  // Y movement in local frame
+  ignition::math::Vector3d worldPos = myPose.Pos() +
+      myPose.Rot().RotateVector(yPos);
 
-  this->model->SetLinearVel(linearVel);
-  this->model->SetAngularVel(targetAngVel);
+  // Z movement in world frame
+  worldPos += zPos;
+
+  // yaw rotation in world frame
+  ignition::math::Quaterniond worldQuat = yawRot * myPose.Rot();
+
+  // pitch rotation in local frame
+  worldQuat = worldQuat * pitchRot;
+
+  ignition::math::Pose3d newPose(worldPos, worldQuat);
+  this->model->SetWorldPose(newPose);
 }
 
 /////////////////////////////////////////////////
 void FRCBlueCameraPlugin::OnData(const sensor_msgs::Joy::ConstPtr& _msg)
 {
-  std::cout << "Joy received" << std::endl;
   this->joyMsg = *_msg;
 }
-
-/*/////////////////////////////////////////////////
-void FRCBlueCameraPlugin::SpawnCamera(const std::string &_name)
-{
-  msgs::Factory msg;
-  std::ostringstream newModelStr;
-
-  std::string modelName = _name + "_model";
-  std::string cameraName = _name + "_sensor";
-  ignition::math::Vector3d pos(0, 0, 1.8);
-  ignition::math::Vector3d rpy(0, 0, 0);
-  double rate = 30;
-  int width = 1080;
-  int height = 720;
-
-  newModelStr << "<sdf version='" << SDF_VERSION << "'>"
-    << "<model name ='" << modelName << "'>"
-    << "<static>true</static>"
-    << "<pose>" << pos << " " << rpy << "</pose>"
-    << "<link name ='body'>"
-    << "  <sensor name ='" << cameraName
-    << "' type ='camera'>"
-    << "    <always_on>1</always_on>"
-    << "    <update_rate>" << rate << "</update_rate>"
-    << "    <visualize>true</visualize>"
-    << "    <camera>"
-    << "      <horizontal_fov>0.78539816339744828</horizontal_fov>"
-    << "      <image>"
-    << "        <width>" << width << "</width>"
-    << "        <height>" << height << "</height>"
-    << "        <format>R8G8B8</format>"
-    << "      </image>"
-    << "      <clip>"
-    << "        <near>0.1</near><far>100</far>"
-    << "      </clip>"
-    << "    </camera>"
-    << "  </sensor>"
-    << "</link>"
-    << "</model>"
-    << "</sdf>";
-
-  msg.set_sdf(newModelStr.str());
-  this->factoryPub->Publish(msg);
-}*/

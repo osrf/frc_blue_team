@@ -69,12 +69,6 @@ namespace gazebo
 
     /// \brief ToDo.
     private: sensor_msgs::Joy joyMsg;
-
-/*    /// \brief Publisher of factory messages.
-    private: transport::PublisherPtr factoryPub;
-
-    /// \brief Node for communication.
-    private: transport::NodePtr node;*/
   };
 
 }
