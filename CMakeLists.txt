@@ -35,11 +35,5 @@ install(TARGETS ${frc_blue_robot_plugin_name}
   RUNTIME DESTINATION bin)
 
 # Install all the world files
-set(world_files worlds/FRCblue.world)
-if (${gazebo_VERSION_MAJOR} GREATER 6)
-  install(FILES ${world_files}
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/share/gazebo-${gazebo_VERSION_MAJOR}/worlds)
-else()
-  install(FILES ${world_files}
-    DESTINATION ${CMAKE_INSTALL_PREFIX}/share/gazebo-${gazebo_VERSION_MAJOR}.${gazebo_VERSION_MINOR}/worlds)
-endif()
+install(DIRECTORY worlds/
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/worlds)
