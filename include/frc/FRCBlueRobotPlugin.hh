@@ -58,6 +58,12 @@ namespace gazebo
     /// \brief Pointer to the model;
     private: physics::ModelPtr model;
 
+    /// \brief Pointer to the left joint;
+    private: physics::JointPtr leftJoint;
+
+    /// \brief Pointer to the right joint;
+    private: physics::JointPtr rightJoint;
+
     /// \brief Joystick topic.
     private: std::string topic;
 

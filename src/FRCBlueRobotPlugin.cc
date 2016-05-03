@@ -50,7 +50,6 @@ void FRCBlueRobotPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   this->updateConnection = event::Events::ConnectWorldUpdateBegin(
     boost::bind(&FRCBlueRobotPlugin::Update, this, _1));
 
-  // ToDo: Load the parameter containing the joystick topic and subscribe to it.
   // Read the <topic> element.
   if (!_sdf->HasElement("topic"))
   {
@@ -63,11 +62,49 @@ void FRCBlueRobotPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
   std::cout << "[" << this->model->GetName() << "] listening Joystick commands"
             << " on ROS topic [" << this->topic << "]" << std::endl;
 
+  //Load the parameter containing the name of the joint controlling the
+  // left wheel.
+  if (!_sdf->HasElement("left_joint"))
+  {
+    std::cerr << "FRCBlueRobotPlugin::Load() No <left_joint> element"
+              << std::endl;
+    return;
+  }
+
+  std::string leftJoint = _sdf->Get<std::string>("left_joint");
+
+  //Load the parameter containing the name of the joint controlling the
+  // right wheel.
+  if (!_sdf->HasElement("right_joint"))
+  {
+    std::cerr << "FRCBlueRobotPlugin::Load() No <right_joint> element"
+              << std::endl;
+    return;
+  }
+
+  std::string rightJoint = _sdf->Get<std::string>("right_joint");
+
+  this->leftJoint = this->model->GetJoint(leftJoint);
+  if (!this->leftJoint)
+  {
+    std::cerr << "FRCBlueRobotPlugin::Load() No joint found with name ["
+              << leftJoint << "]" << std::endl;
+    return;
+  }
+
+  this->rightJoint = this->model->GetJoint(rightJoint);
+  if (!this->leftJoint)
+  {
+    std::cerr << "FRCBlueRobotPlugin::Load() No joint found with name ["
+              << rightJoint << "]" << std::endl;
+    return;
+  }
+
   // ROS initialization.
   ros::M_string m;
   ros::init(m, "blue_team", ros::init_options::NoSigintHandler);
   this->n = new ros::NodeHandle();
-  this->sub = this->n->subscribe(this->topic, 1000, &FRCBlueRobotPlugin::OnData,
+  this->sub = this->n->subscribe(this->topic, 1, &FRCBlueRobotPlugin::OnData,
     this);
 }
 
@@ -85,17 +122,16 @@ void FRCBlueRobotPlugin::Update(const common::UpdateInfo & /*_info*/)
 
   auto myPose = this->model->GetWorldPose().Ign();
 
-  // Get linear velocity in world frame
+  //// Get linear velocity in world frame
   ignition::math::Vector3d linearVel = myPose.Rot().RotateVector(
-      targetLinVel * ignition::math::Vector3d::UnitX);
+    targetLinVel * ignition::math::Vector3d::UnitX);
 
-  this->model->SetLinearVel(linearVel);
+  this->model->SetLinearVel(-linearVel);
   this->model->SetAngularVel(targetAngVel);
 }
 
 /////////////////////////////////////////////////
 void FRCBlueRobotPlugin::OnData(const sensor_msgs::Joy::ConstPtr& _msg)
 {
-  std::cout << "Joy received" << std::endl;
   this->joyMsg = *_msg;
 }

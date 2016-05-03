@@ -7,7 +7,7 @@
     <include>
       <uri>model://sun</uri>
     </include>
-    <model name="box">
+    <!--<model name="box">
       <pose>0 0 0.5 0 0 0</pose>
       <link name="link">
         <collision name="collision">
@@ -27,13 +27,19 @@
             <script>Gazebo/WoodPallet</script>
           </material>
         </visual>
-      </link>
+      </link> -->
+      <model name="blue1">
+        <include>
+          <uri>model://frc_blue_scorer</uri>
+        </include>
 
-      <!-- Load the plugin to control the FRC robot -->
-      <plugin name="FRC_blue_box_plugin" filename='libFRCBlueRobotPlugin.so'>
-        <!-- Parameters -->
-        <topic>/blue/joy1</topic>
-      </plugin>
-    </model>
+        <!-- Load the plugin to control the FRC robot -->
+        <plugin name="FRC_blue_box_plugin" filename='libFRCBlueRobotPlugin.so'>
+          <!-- Parameters -->
+          <topic>/blue/joy1</topic>
+          <left_joint>frc2016_blue_scorer::left_wheel_hinge</left_joint>
+          <right_joint>frc2016_blue_scorer::right_wheel_hinge</right_joint>
+        </plugin>
+      </model>
   </world>
 </sdf>
