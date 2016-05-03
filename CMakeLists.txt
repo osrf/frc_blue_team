@@ -9,6 +9,7 @@ find_package(roscpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 
 include_directories(
+  include
   ${GAZEBO_INCLUDE_DIRS}
   ${roscpp_INCLUDE_DIRS}
   ${sensor_msgs_INCLUDE_DIRS}
@@ -18,7 +19,7 @@ catkin_package()
 
 # Create the libFRCBlueRobotPlugin.so library.
 set(frc_blue_robot_plugin_name FRCBlueRobotPlugin)
-add_library(${frc_blue_robot_plugin_name} FRCBlueRobotPlugin.cc)
+add_library(${frc_blue_robot_plugin_name} src/FRCBlueRobotPlugin.cc)
 target_link_libraries(${frc_blue_robot_plugin_name}
   ${GAZEBO_LIBRARIES}
   ${roscpp_LIBRARIES}
