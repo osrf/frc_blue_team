@@ -1,0 +1,363 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <model name="frc2016_blue_scorer">
+    <static>true</static>
+    <link name="link">
+      <inertial>
+        <mass>10</mass>
+        <pose>0 0 0.06738 0 0 0</pose>
+        <inertia>
+          <ixx>0.312195</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>1.359270833</iyy>
+          <iyz>0</iyz>
+          <izz>1.641090833</izz>
+        </inertia>
+      </inertial>
+
+      <visual name="platform">
+        <pose>0 0 0.005 0 -0.1 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.8 0.01</size>
+          </box>
+        </geometry>
+      </visual>
+      <collision name="platform">
+        <pose>0 0 0.005 0 -0.1 0</pose>
+        <geometry>
+          <box>
+            <size>0.5 0.8 0.01</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="platform_side1">
+        <pose>0.075 -0.40 0.03 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.35 0.003175 0.04</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.46 0.46 0.46 1.0</ambient>
+          <diffuse>0.46 0.46 0.46 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="platform_side1">
+        <pose>0.075 -0.40 0.03 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.35 0.003175 0.04</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="ramp1">
+        <pose>0.075 -0.46 0.026 0.4 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.35 0.13 0.001</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.2 0.2 0.2 1.0</ambient>
+          <diffuse>0.2 0.2 0.2 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="ramp1">
+        <pose>0.075 -0.46 0.026 0.4 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.35 0.13 0.001</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.2 0.2 0.2 1.0</ambient>
+          <diffuse>0.2 0.2 0.2 1.0</diffuse>
+        </material>
+      </collision>
+
+      <visual name="platform_side2">
+        <pose>0.075 0.40 0.03 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.35 0.003175 0.04</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.46 0.46 0.46 1.0</ambient>
+          <diffuse>0.46 0.46 0.46 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="platform_side2">
+        <pose>0.075 0.40 0.03 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.35 0.003175 0.04</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="ramp2">
+        <pose>0.075 0.46 0.026 -0.4 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.35 0.13 0.001</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.2 0.2 0.2 1.0</ambient>
+          <diffuse>0.2 0.2 0.2 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="ramp2">
+        <pose>0.075 0.46 0.026 -0.4 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.35 0.13 0.001</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.2 0.2 0.2 1.0</ambient>
+          <diffuse>0.2 0.2 0.2 1.0</diffuse>
+        </material>
+      </collision>
+
+      <visual name="platform_side3">
+        <pose>0.2485 0 0.03 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.003175 0.8 0.04</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.46 0.46 0.46 1.0</ambient>
+          <diffuse>0.46 0.46 0.46 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="platform_side3">
+        <pose>0.2485 0 0.03 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.003175 0.8 0.04</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="beam_left">
+        <pose>-0.1 -0.41 0.075 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.01</radius>
+            <length>0.15</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.46 0.46 0.46 1.0</ambient>
+          <diffuse>0.46 0.46 0.46 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="beam_left">
+        <pose>-0.1 -0.41 0.075 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.01</radius>
+            <length>0.15</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <visual name="platform_side4">
+        <pose>-0.09785 0 0.03 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.003175 0.8 0.04</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.46 0.46 0.46 1.0</ambient>
+          <diffuse>0.46 0.46 0.46 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="platform_side4">
+        <pose>-0.09785 0 0.03 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.003175 0.8 0.04</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="ramp4">
+        <pose>0.31 0 0.026 0 0.4 0</pose>
+        <geometry>
+          <box>
+            <size>0.13 0.8 0.001</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.2 0.2 0.2 1.0</ambient>
+          <diffuse>0.2 0.2 0.2 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="ramp4">
+        <pose>0.31 0 0.026 0 0.4 0</pose>
+        <geometry>
+          <box>
+            <size>0.13 0.8 0.001</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="pocket">
+        <pose>-0.23 0 0.0005 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.25 0.8 0.001</size>
+          </box>
+        </geometry>
+      </visual>
+      <collision name="pocket">
+        <pose>-0.23 0 0.0005 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.25 0.8 0.001</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="pocket_side1">
+        <pose>-0.225 0.4 0.03 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.25 0.003175 0.04</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.46 0.46 0.46 1.0</ambient>
+          <diffuse>0.46 0.46 0.46 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="pocket_side1">
+        <pose>-0.225 0.4 0.03 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.25 0.003175 0.04</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="pocket_side2">
+        <pose>-0.225 -0.4 0.03 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.25 0.003175 0.04</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.46 0.46 0.46 1.0</ambient>
+          <diffuse>0.46 0.46 0.46 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="pocket_side2">
+        <pose>-0.225 -0.4 0.03 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.25 0.003175 0.04</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="pocket_side3">
+        <pose>-0.10785 0 0.03 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.003175 0.8 0.04</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.46 0.46 0.46 1.0</ambient>
+          <diffuse>0.46 0.46 0.46 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="pocket_side3">
+        <pose>-0.1085 0 0.03 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.003175 0.8 0.04</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="pocket_side4">
+        <pose>-0.34785 0 0.03 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.003175 0.8 0.04</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.46 0.46 0.46 1.0</ambient>
+          <diffuse>0.46 0.46 0.46 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="pocket_side4">
+        <pose>-0.3485 0 0.03 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.003175 0.8 0.04</size>
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name="pocket_beam_left">
+        <pose>-0.225 -0.41 1.03 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.01</radius>
+            <length>2</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.46 0.46 0.46 1.0</ambient>
+          <diffuse>0.46 0.46 0.46 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="pocket_beam_left">
+        <pose>-0.225 -0.41 1.03 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.01</radius>
+            <length>2</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+       <visual name="beam_right">
+        <pose>-0.11 0.41 0.075 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.01</radius>
+            <length>0.15</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.46 0.46 0.46 1.0</ambient>
+          <diffuse>0.46 0.46 0.46 1.0</diffuse>
+        </material>
+      </visual>
+      <collision name="beam_right">
+        <pose>-0.1 0.41 0.075 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>0.01</radius>
+            <length>0.15</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+    </link>
+  </model>
+</sdf>
