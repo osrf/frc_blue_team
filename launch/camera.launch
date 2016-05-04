@@ -1,6 +1,7 @@
 <launch>
   <arg name="name" default="camera1"/>
+  <arg name="joystick" default="joy1"/>
 
   <!-- Spawn the model into Gazebo -->
-  <node name="camera_spawn" pkg="gazebo_ros" type="spawn_model" args="-file $(find blue_team)/models/camera/model.sdf -sdf -x 2.4 -y 8.2 -z 1.7 -R 0 -P -0.003 -Y -1.895 -model $(arg name)" />
+  <node name="camera_spawn" pkg="gazebo_ros" type="spawn_model" args="-file $(find blue_team)/models/camera_$(arg joystick)/model.sdf -sdf -x 2.4 -y 8.2 -z 1.7 -R 0 -P -0.003 -Y -1.895 -model $(arg name)" />
 </launch>

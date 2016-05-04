@@ -8,5 +8,6 @@
   <!-- Spawn cameras to view the world -->
   <include file="$(find blue_team)/launch/camera.launch">
     <arg name="name" value="camera1" />
+    <arg name="joystick" value="joy1" />
   </include>
 </launch>
