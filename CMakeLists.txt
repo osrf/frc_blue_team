@@ -67,7 +67,7 @@ install(TARGETS ${frc_blue_diff_drive_plugin_name}
 install(DIRECTORY worlds/
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/worlds)
 
-# Install all the launch files
+# Install all the model files
 install(DIRECTORY models/
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/models)
 
