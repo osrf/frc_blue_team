@@ -1,0 +1,41 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+ <model name="camera">
+      <pose>1 0 0.5 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.05 0.05 0.05</size>
+            </box>
+          </geometry>
+          <material>
+            <script>Gazebo/Grey</script>
+          </material>
+        </visual>
+        <sensor name="camera" type="camera">
+          <camera>
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+              <width>320</width>
+              <height>240</height>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>true</visualize>
+        </sensor>
+      </link>
+
+      <!-- Load the plugin to control the FRC camera -->
+      <plugin name="FRC_blue_camera_plugin" filename='libFRCBlueCameraPlugin.so'>
+        <!-- Parameters -->
+        <topic>/blue/joy3</topic>
+      </plugin>
+  </model>
+</sdf>

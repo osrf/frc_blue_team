@@ -14,4 +14,8 @@
     <arg name="name" value="camera2" />
     <arg name="joystick" value="joy2" />
   </include>
+  <include file="$(find blue_team)/launch/camera.launch">
+    <arg name="name" value="camera3" />
+    <arg name="joystick" value="joy3" />
+  </include>
 </launch>
