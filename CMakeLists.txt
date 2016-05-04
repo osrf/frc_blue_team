@@ -42,7 +42,6 @@ target_link_libraries(${frc_blue_camera_plugin_name}
   ${roscpp_LIBRARIES}
   ${sensor_msgs_LIBRARIES}
 )
-
 install(TARGETS ${frc_blue_camera_plugin_name}
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
