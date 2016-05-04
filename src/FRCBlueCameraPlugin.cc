@@ -82,18 +82,51 @@ void FRCBlueCameraPlugin::Update(const common::UpdateInfo & /*_info*/)
   double posStep = 0.001;
   double rotStep = 0.0005;
 
-  // right joy left right
-  double pan = this->joyMsg.axes.at(2);
-  // right joy up down
-  double tilt = -this->joyMsg.axes.at(3);
-  // l1
-  double left = this->joyMsg.buttons.at(10);
-  // r1
-  double right = this->joyMsg.buttons.at(11);
-  // l2
-  double down = this->joyMsg.buttons.at(8);
-  // r2
-  double up = this->joyMsg.buttons.at(9);
+
+  double pan = 0;
+  double tilt = 0;
+  double left = 0;
+  double right = 0;
+  double down = 0;
+  double up = 0;
+
+  // ps controller
+  if (this->joyMsg.buttons.size() > 11)
+  {
+    // right joy left right
+    pan = this->joyMsg.axes.at(2);
+    // right joy up down
+    tilt = -this->joyMsg.axes.at(3);
+
+    // l1
+    left = this->joyMsg.buttons.at(10);
+    // r1
+    right = this->joyMsg.buttons.at(11);
+
+    // l2
+    down = this->joyMsg.buttons.at(8);
+    // r2
+    up = this->joyMsg.buttons.at(9);
+
+  }
+  // logitech
+  else
+  {
+    // right joy left right
+    pan = this->joyMsg.axes.at(3);
+    // right joy up down
+    tilt = -this->joyMsg.axes.at(4);
+
+    // l1
+    left = this->joyMsg.buttons.at(4);
+    // r1
+    right = this->joyMsg.buttons.at(5);
+
+    // l2
+    down = (this->joyMsg.axes.at(2) < -0.5) ? 1 : 0;
+    // r2
+    up = (this->joyMsg.axes.at(5) < -0.5) ? 1 : 0;
+  }
 
   double y = (left-right) * posStep;
   double z = (up-down) * posStep;
