@@ -96,6 +96,6 @@ void FRCBlueRobotPlugin::Update(const common::UpdateInfo & /*_info*/)
 /////////////////////////////////////////////////
 void FRCBlueRobotPlugin::OnData(const sensor_msgs::Joy::ConstPtr& _msg)
 {
-  std::cout << "Joy received" << std::endl;
+//  std::cout << "Joy received" << std::endl;
   this->joyMsg = *_msg;
 }

@@ -42,14 +42,34 @@ target_link_libraries(${frc_blue_camera_plugin_name}
   ${roscpp_LIBRARIES}
   ${sensor_msgs_LIBRARIES}
 )
+
 install(TARGETS ${frc_blue_camera_plugin_name}
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin)
 
+# Create the libFRCBlueDiffDrivePlugin.so library.
+set(frc_blue_diff_drive_plugin_name FRCBlueDiffDrivePlugin)
+add_library(${frc_blue_diff_drive_plugin_name} src/FRCBlueDiffDrivePlugin.cc)
+target_link_libraries(${frc_blue_diff_drive_plugin_name}
+  ${GAZEBO_LIBRARIES}
+  ${roscpp_LIBRARIES}
+  ${sensor_msgs_LIBRARIES}
+)
+
+install(TARGETS ${frc_blue_diff_drive_plugin_name}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin)
+
+
 # Install all the world files
 install(DIRECTORY worlds/
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/worlds)
+
+# Install all the launch files
+install(DIRECTORY models/
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/models)
 
 # Install all the launch files
 install(DIRECTORY launch/

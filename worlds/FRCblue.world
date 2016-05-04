@@ -7,7 +7,9 @@
     <include>
       <uri>model://sun</uri>
     </include>
-    <model name="box">
+
+
+<!--    <model name="box">
       <pose>0 0 0.5 0 0 0</pose>
       <link name="link">
         <collision name="collision">
@@ -29,12 +31,15 @@
         </visual>
       </link>
 
-      <!-- Load the plugin to control the FRC robot -->
       <plugin name="FRC_blue_box_plugin" filename='libFRCBlueRobotPlugin.so'>
-        <!-- Parameters -->
         <topic>/blue/joy1</topic>
       </plugin>
-    </model>
+    </model>-->
+
+
+    <include>
+      <uri>model://minion</uri>
+    </include>
 
     <model name="camera">
       <pose>1 0 0.5 0 0 0</pose>
