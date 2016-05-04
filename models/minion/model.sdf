@@ -488,10 +488,5 @@
     </joint>
     <static>0</static>
     <allow_auto_disable>1</allow_auto_disable>
-    <plugin name='diff_drive' filename='libFRCBlueDiffDrivePlugin.so'>
-      <topic>/blue/joy1</topic>
-      <torque>35</torque>
-      <turn_rate>8</turn_rate>
-    </plugin>
   </model>
 </sdf>
