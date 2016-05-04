@@ -21,6 +21,12 @@ include_directories(
 
 catkin_package()
 
+catkin_add_env_hooks(99_blue_team_setup SHELLS sh)
+
+# Install the operator computer script.
+catkin_install_python(PROGRAMS scripts/blue_team_go
+  DESTINATION bin)
+
 # Create the libFRCBlueRobotPlugin.so library.
 set(frc_blue_robot_plugin_name FRCBlueRobotPlugin)
 add_library(${frc_blue_robot_plugin_name} src/FRCBlueRobotPlugin.cc)
