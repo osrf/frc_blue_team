@@ -51,6 +51,10 @@ install(TARGETS ${frc_blue_camera_plugin_name}
 install(DIRECTORY worlds/
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/worlds)
 
+# Install all the model files
+install(DIRECTORY models/
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/models)
+
 # Install all the launch files
 install(DIRECTORY launch/
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch)
