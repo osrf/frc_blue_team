@@ -3,11 +3,17 @@
   <model name='blue_2'>
 
     <include>
-      <uri>model://basic_car</uri>
+      <uri>model://minion</uri>
     </include>
 
-    <plugin name='FRCBlueRobotPlugin' filename='libFRCBlueRobotPlugin.so'>
+    <plugin name='FRCBlueDiffDrivePlugin' filename='libFRCBlueDiffDrivePlugin.so'>
       <topic>/blue/joy2</topic>
+    </plugin>
+
+    <plugin name='diff_drive' filename='libFRCBlueDiffDrivePlugin.so'>
+      <topic>/blue/joy2</topic>
+      <torque>35</torque>
+      <turn_rate>8</turn_rate>
     </plugin>
   </model>
 </sdf>
