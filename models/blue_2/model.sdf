@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <sdf version='1.6'>
-  <model name='blue_1'>
+  <model name='blue_2'>
 
     <include>
       <uri>model://basic_car</uri>
