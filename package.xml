@@ -1,5 +1,5 @@
 <package format="2">
-  <name>frc_blue_team</name>
+  <name>blue_team</name>
   <version>0.1.0</version>
   <description>The blue team's package for the FRC trail.</description>
   <license>Apache 2.0</license>
