@@ -8,7 +8,6 @@
     <arg name="debug" value="false"/>
   </include>
 
-
   <remap from="/joy" to="/blue/joy1"/>
   <!-- joy node -->
   <node respawn="true" pkg="joy" type="joy_node" name="joy_node" >
