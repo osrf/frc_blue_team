@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <sdf version='1.6'>
-  <model name='frc2016_blue_scorer_9'>
+  <model name='frc2016_blue_scorer'>
     <link name='collector_plate'>
       <pose frame=''>0.077308 0 0.141077 0 -0.062752 0</pose>
       <inertial>
@@ -104,11 +104,59 @@
         </inertia>
         <pose frame=''>0 0 0 0 -0 0</pose>
       </inertial>
-      <pose frame=''>0 0 0.09 -1e-06 -0 -5e-06</pose>
+      <pose frame=''>-0 0 0.09 -1e-06 -0 -5e-06</pose>
       <gravity>1</gravity>
       <self_collide>0</self_collide>
       <kinematic>0</kinematic>
       <enable_wind>0</enable_wind>
+      <visual name='visual_base'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <geometry>
+          <box>
+            <size>0.730838 0.864298 0.006</size>
+          </box>
+        </geometry>
+        <material>
+          <lighting>1</lighting>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+          <specular>0.01 0.01 0.01 1</specular>
+          <emissive>0 0 0 1</emissive>
+          <shader type='vertex'>
+            <normal_map>__default__</normal_map>
+          </shader>
+        </material>
+        <cast_shadows>1</cast_shadows>
+        <transparency>0</transparency>
+      </visual>
+      <visual name='visual_caster_2'>
+        <pose frame=''>0.338156 0.392417 -0.005 0 -0 0</pose>
+        <geometry>
+          <sphere>
+            <radius>0.023419</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <lighting>1</lighting>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+          <ambient>0.3 0.3 0.3 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+          <specular>0.01 0.01 0.01 1</specular>
+          <emissive>0 0 0 1</emissive>
+          <shader type='pixel'>
+            <normal_map>__default__</normal_map>
+          </shader>
+        </material>
+        <cast_shadows>1</cast_shadows>
+        <transparency>0</transparency>
+      </visual>
       <visual name='visual_caster_1'>
         <pose frame=''>0.338156 -0.392417 -0.005 0 -0 0</pose>
         <geometry>
@@ -188,30 +236,6 @@
           </contact>
         </surface>
       </collision>
-      <visual name='visual_caster_2'>
-        <pose frame=''>0.338156 0.392417 -0.005 0 -0 0</pose>
-        <geometry>
-          <sphere>
-            <radius>0.023419</radius>
-          </sphere>
-        </geometry>
-        <material>
-          <lighting>1</lighting>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Grey</name>
-          </script>
-          <ambient>0.3 0.3 0.3 1</ambient>
-          <diffuse>0.7 0.7 0.7 1</diffuse>
-          <specular>0.01 0.01 0.01 1</specular>
-          <emissive>0 0 0 1</emissive>
-          <shader type='pixel'>
-            <normal_map>__default__</normal_map>
-          </shader>
-        </material>
-        <cast_shadows>1</cast_shadows>
-        <transparency>0</transparency>
-      </visual>
       <collision name='collision_caster_2'>
         <laser_retro>0</laser_retro>
         <max_contacts>10</max_contacts>
@@ -267,30 +291,6 @@
           </contact>
         </surface>
       </collision>
-      <visual name='visual_base'>
-        <pose frame=''>0 0 0 0 -0 0</pose>
-        <geometry>
-          <box>
-            <size>0.730838 0.864298 0.006</size>
-          </box>
-        </geometry>
-        <material>
-          <lighting>1</lighting>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Grey</name>
-          </script>
-          <ambient>0.3 0.3 0.3 1</ambient>
-          <diffuse>0.7 0.7 0.7 1</diffuse>
-          <specular>0.01 0.01 0.01 1</specular>
-          <emissive>0 0 0 1</emissive>
-          <shader type='vertex'>
-            <normal_map>__default__</normal_map>
-          </shader>
-        </material>
-        <cast_shadows>1</cast_shadows>
-        <transparency>0</transparency>
-      </visual>
       <collision name='collision_base'>
         <laser_retro>0</laser_retro>
         <max_contacts>10</max_contacts>
@@ -547,18 +547,18 @@
     </link>
     <link name='elevator_beam'>
       <inertial>
-        <mass>1.98298</mass>
+        <mass>5.6408</mass>
         <inertia>
-          <ixx>0.0701944</ixx>
+          <ixx>0.378279</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.0696831</iyy>
+          <iyy>0.198061</iyy>
           <iyz>0</iyz>
-          <izz>0.000633584</izz>
+          <izz>0.180243</izz>
         </inertia>
         <pose frame=''>0 0 0 0 -0 0</pose>
       </inertial>
-      <pose frame=''>-0.44053 -0.391265 0.438197 0 -0 0</pose>
+      <pose frame=''>-0.44053 -0.079637 0.438197 0 -0 0</pose>
       <gravity>1</gravity>
       <self_collide>0</self_collide>
       <kinematic>0</kinematic>
@@ -567,7 +567,7 @@
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
           <box>
-            <size>0.019223 0.058861 0.649092</size>
+            <size>0.005198 0.619205 0.649092</size>
           </box>
         </geometry>
         <material>
@@ -593,7 +593,7 @@
         <pose frame=''>0 0 0 0 -0 0</pose>
         <geometry>
           <box>
-            <size>0.019223 0.058861 0.649092</size>
+            <size>0.005198 0.619205 0.649092</size>
           </box>
         </geometry>
         <surface>
@@ -935,7 +935,7 @@
       </collision>
     </link>
     <link name='platform_side4'>
-      <pose frame=''>-0.09785 0 0.13 0 -0 0</pose>
+      <pose frame=''>-0.09785 -0 0.13 0 -0 0</pose>
       <inertial>
         <mass>0.27432</mass>
         <pose frame=''>0 0 0 0 -0 0</pose>
@@ -1219,7 +1219,7 @@
       </collision>
     </link>
     <link name='pocket_side2'>
-      <pose frame=''>-0.268145 -0.4 0.159472 0 -0 0</pose>
+      <pose frame=''>-0.268145 -0.4 0.152367 0 -0 0</pose>
       <inertial>
         <mass>0.263625</mass>
         <pose frame=''>0 0 0 0 -0 0</pose>
@@ -1413,7 +1413,7 @@
       </collision>
     </link>
     <link name='pocket_side4'>
-      <pose frame=''>-0.424326 0 0.154302 0 -0 0</pose>
+      <pose frame=''>-0.424326 -0 0.154302 0 -0 0</pose>
       <inertial>
         <mass>0.708356</mass>
         <pose frame=''>0 0 0 0 -0 0</pose>
@@ -1716,7 +1716,7 @@
         </inertia>
         <pose frame=''>0 0 0 0 -0 0</pose>
       </inertial>
-      <pose frame=''>-0.269466 -0.309295 0.101968 0 -0 0</pose>
+      <pose frame=''>-0.269466 -0.309295 0.097847 0 -0 0</pose>
       <gravity>1</gravity>
       <self_collide>0</self_collide>
       <kinematic>0</kinematic>
@@ -2137,7 +2137,7 @@
         </ode>
       </physics>
     </joint>
-    <joint name='collector_plate_JOINT_gate' type='prismatic'>
+    <joint name='collector_plate_gate' type='prismatic'>
       <parent>collector_plate</parent>
       <child>platform_side4</child>
       <pose frame=''>0 0 0 0 -0 0</pose>
@@ -2171,7 +2171,7 @@
         </ode>
       </physics>
     </joint>
-    <joint name='elevator_beam_JOINT_lift' type='prismatic'>
+    <joint name='elevator_beam_lift' type='prismatic'>
       <parent>elevator_beam</parent>
       <child>slider_plate</child>
       <pose frame=''>0 0 0 0 -0 0</pose>
@@ -2256,7 +2256,7 @@
         </ode>
       </physics>
     </joint>
-    <joint name='pocket_JOINT_3_gate' type='revolute'>
+    <joint name='score_gate' type='revolute'>
       <parent>pocket</parent>
       <child>pocket_side2</child>
       <pose frame=''>0 0 -0.0485 0 -0 0</pose>
@@ -2290,7 +2290,7 @@
         </ode>
       </physics>
     </joint>
-    <joint name='pocket_JOINT_gate' type='prismatic'>
+    <joint name='pocket_gate' type='prismatic'>
       <parent>pocket</parent>
       <child>pocket_side3</child>
       <pose frame=''>0 0 0 0 -0 0</pose>
@@ -2324,7 +2324,7 @@
         </ode>
       </physics>
     </joint>
-    <joint name='pocket_JOINT_slider' type='prismatic'>
+    <joint name='pocket_slider' type='prismatic'>
       <parent>slider_plate</parent>
       <child>pocket</child>
       <pose frame=''>0 0 0 0 -0 0</pose>
@@ -2341,7 +2341,7 @@
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
           <damping>30</damping>
-          <friction>10</friction>
+          <friction>0</friction>
         </dynamics>
       </axis>
       <physics>
