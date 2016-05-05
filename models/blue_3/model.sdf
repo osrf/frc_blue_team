@@ -3,7 +3,7 @@
   <model name='blue_3'>
 
     <include>
-      <uri>model://basic_car</uri>
+      <uri>model://frc_blue_scorer</uri>
     </include>
 
     <plugin name='FRCBlueRobotPlugin' filename='libFRCBlueRobotPlugin.so'>
