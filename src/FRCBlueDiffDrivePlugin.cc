@@ -156,7 +156,7 @@ void FRCBlueDiffDrivePlugin::Update(const common::UpdateInfo & /*_info*/)
   // ps controller
   if (this->joyMsg.buttons.size() > 12)
     boostFactor = this->joyMsg.buttons.at(12) ? 2 : 1;
-  // logitech
+  // logitech wireless
   else
     boostFactor = this->joyMsg.buttons.at(3) ? 2 : 1;
 

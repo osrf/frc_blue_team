@@ -126,7 +126,7 @@ void FRCBlueGripperPlugin::Update(const common::UpdateInfo & /*_info*/)
     // square
     lift = this->joyMsg.buttons.at(15);
   }
-  // logitech
+  // logitech wireless
   else
   {
     // A
