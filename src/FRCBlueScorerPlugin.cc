@@ -40,7 +40,7 @@ InternalJointController::InternalJointController(const physics::JointPtr _joint,
 : joint(_joint),
   lowerTarget(_lowerTarget),
   upperTarget(_upperTarget),
-  targetPose(_lowerTarget),
+  target(_lowerTarget),
   buttonIndex(_buttonIndex)
 {
   this->pid.SetPGain(_p);
@@ -71,9 +71,17 @@ void InternalJointController::Update(const sensor_msgs::Joy &_joyMsg)
   }
 
   auto dt = now - this->lastControllerUpdate;
-  auto currentPose = this->joint->GetAngle(0);
-  auto poseError = currentPose - this->targetPose;
-  double output = this->pid.Update(poseError.Radian(), dt);
+  auto current = this->joint->GetAngle(0);
+  auto error = current - this->target;
+  double output = this->pid.Update(error.Radian(), dt);
+
+  if ((ignition::math::equal(target, this->lowerTarget)) &&
+      (this->joint->GetName().find("_beam_lift") != std::string::npos))
+  {
+    output = std::max(std::min(output, 1000.0), 0.0);
+  }
+  else
+    output = std::max(std::min(output, 1000.0), -1000.0);
 
   this->joint->SetForce(0, output);
 
@@ -83,10 +91,10 @@ void InternalJointController::Update(const sensor_msgs::Joy &_joyMsg)
 /////////////////////////////////////////////////
 void InternalJointController::Toggle()
 {
-  if (ignition::math::equal(this->targetPose, this->lowerTarget))
-    this->targetPose = this->upperTarget;
+  if (ignition::math::equal(this->target, this->lowerTarget))
+    this->target = this->upperTarget;
   else
-    this->targetPose = this->lowerTarget;
+    this->target = this->lowerTarget;
 }
 
 /////////////////////////////////////////////////

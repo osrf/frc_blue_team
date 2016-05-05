@@ -15,8 +15,8 @@
  *
 */
 
-#ifndef _GAZEBO_FRC_BLUE_SCORER_PLUGIN_HH_
-#define _GAZEBO_FRC_BLUE_SCORER_PLUGIN_HH_
+#ifndef _GAZEBO_FRC_BLUE_ROBOT_PLUGIN_HH_
+#define _GAZEBO_FRC_BLUE_ROBOT_PLUGIN_HH_
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wshadow"
@@ -32,52 +32,21 @@
 
 namespace gazebo
 {
-
-  class GAZEBO_VISIBLE InternalJointController
-  {
-    /// \brief ToDo.
-    public: InternalJointController(const physics::JointPtr _joint,
-      const double _p, const double _d,
-      const double _lowerTarget, const double _upperTarget,
-      const int _buttonIndex);
-
-    /// \brief ToDo.
-    public: void Update(const sensor_msgs::Joy &_joyMsg);
-
-    /// \brief ToDo.
-    private: void Toggle();
-
-    /// \brief ToDo.
-    private: physics::JointPtr joint;
-    /// \brief ToDo.
-    private: double lowerTarget;
-    /// \brief ToDo.
-    private: double upperTarget;
-    /// \brief ToDo.
-    private: gazebo::common::PID pid;
-
-    private: double target;
-
-    private: int buttonIndex;
-
-    private: gazebo::common::Time lastToggleTime;
-
-    /// \brief Time of the last update.
-    private: gazebo::common::Time lastControllerUpdate;
-  };
-
-  /// \class FRCBlueScorerPlugin FRCBlueScorerPlugin.hh
+  /// \class FRCBlueGripperPlugin FRCBlueGripperPlugin.hh
   /// \brief ToDo.
-  class GAZEBO_VISIBLE FRCBlueScorerPlugin : public ModelPlugin
+  class GAZEBO_VISIBLE FRCBlueGripperPlugin : public ModelPlugin
   {
     /// \brief Constructor.
-    public: FRCBlueScorerPlugin() = default;
+    public: FRCBlueGripperPlugin() = default;
 
     /// \brief Destructor.
-    public: ~FRCBlueScorerPlugin();
+    public: ~FRCBlueGripperPlugin();
 
     // Documentation Inherited.
     public: virtual void Load(physics::ModelPtr _model, sdf::ElementPtr _sdf);
+
+    // Documentation Inherited.
+    public: virtual void Init();
 
     /// \brief Update the foosball table rods.
     /// \param[in] _info Update information provided by the server.
@@ -85,6 +54,9 @@ namespace gazebo
 
     /// \brief ToDo.
     void OnData(const sensor_msgs::Joy::ConstPtr& _msg);
+
+    /// \brief Find revolute joints in the model.
+    private: void FindJoints();
 
     /// \brief Pointer to the update event connection.
     private: event::ConnectionPtr updateConnection;
@@ -104,7 +76,14 @@ namespace gazebo
     /// \brief ToDo.
     private: sensor_msgs::Joy joyMsg;
 
-    private: std::vector<InternalJointController*> controllers;
+    /// \brief Revolute joint for moving the left finger of the gripper.
+    private: physics::JointPtr leftJoint;
+
+    /// \brief Revolute joint for moving the right finger of the gripper.
+    private: physics::JointPtr rightJoint;
+
+    /// \brief Revolute joint for moving the up axis of the gripper.
+    private: physics::JointPtr upJoint;
   };
 
 }

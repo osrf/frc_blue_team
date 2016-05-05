@@ -121,6 +121,8 @@ void FRCBlueDiffDrivePlugin::Load(physics::ModelPtr _model,
   this->n = new ros::NodeHandle();
   this->sub = this->n->subscribe(this->topic, 1000,
       &FRCBlueDiffDrivePlugin::OnData, this);
+
+  std::cout << "Diff drive plugin loaded!" << std::endl;
 }
 
 /////////////////////////////////////////////////
@@ -149,9 +151,19 @@ void FRCBlueDiffDrivePlugin::Update(const common::UpdateInfo & /*_info*/)
   if (this->joyMsg.axes.empty())
     return;
 
+  if (this->joyMsg.buttons.empty())
+    return;
+
+  double boostFactor = 1;
+  // ps controller
+  if (this->joyMsg.buttons.size() > 12)
+    boostFactor = this->joyMsg.buttons.at(12) ? 2 : 1;
+  // logitech wireless
+  else
+    boostFactor = this->joyMsg.buttons.at(3) ? 2 : 1;
 
   double turn = -this->joyMsg.axes.at(0);
-  double vr = -0.1 * this->joyMsg.axes.at(1) * this->torque;
+  double vr = -0.1 * this->joyMsg.axes.at(1) * this->torque * boostFactor;
 
   double va = turn * this->turnRate;
 
