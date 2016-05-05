@@ -218,12 +218,10 @@
             <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
             <collide_bitmask>1</collide_bitmask>
             <ode>
-              <soft_cfm>0</soft_cfm>
-              <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+6</kp>
               <kd>1</kd>
-              <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <max_vel>100.0</max_vel>
+              <min_depth>0.002</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
@@ -273,12 +271,10 @@
             <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
             <collide_bitmask>1</collide_bitmask>
             <ode>
-              <soft_cfm>0</soft_cfm>
-              <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+6</kp>
               <kd>1</kd>
-              <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <max_vel>100.0</max_vel>
+              <min_depth>0.002</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
@@ -2055,7 +2051,7 @@
             <ode>
               <mu>1</mu>
               <mu2>1</mu2>
-              <fdir1>0 0 0</fdir1>
+              <fdir1>1 0 0</fdir1>
               <slip1>0</slip1>
               <slip2>0</slip2>
             </ode>
@@ -2078,12 +2074,10 @@
             <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
             <collide_bitmask>1</collide_bitmask>
             <ode>
-              <soft_cfm>0</soft_cfm>
-              <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+8</kp>
               <kd>1</kd>
-              <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <max_vel>100.0</max_vel>
+              <min_depth>0.002</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
@@ -2155,7 +2149,7 @@
             <ode>
               <mu>1</mu>
               <mu2>1</mu2>
-              <fdir1>0 0 0</fdir1>
+              <fdir1>1 0 0</fdir1>
               <slip1>0</slip1>
               <slip2>0</slip2>
             </ode>
@@ -2178,12 +2172,10 @@
             <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
             <collide_bitmask>1</collide_bitmask>
             <ode>
-              <soft_cfm>0</soft_cfm>
-              <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+8</kp>
               <kd>1</kd>
-              <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <max_vel>100.0</max_vel>
+              <min_depth>0.002</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
@@ -2197,12 +2189,27 @@
         </surface>
       </collision>
     </link>
-    <joint name='collector_plate_JOINT_10' type='fixed'>
+    <joint name='collector_plate_JOINT_10' type='revolute'>
       <parent>collector_plate</parent>
       <child>beam_right</child>
       <pose frame=''>0 0 0 0 -0 0</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <use_parent_model_frame>0</use_parent_model_frame>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
+        </limit>
+        <dynamics>
+          <damping>1</damping>
+          <friction>0</friction>
+        </dynamics>
+      </axis>
       <physics>
         <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
           <limit>
             <cfm>0</cfm>
             <erp>0.2</erp>
@@ -2316,12 +2323,27 @@
         </ode>
       </physics>
     </joint>
-    <joint name='collector_plate_JOINT_9' type='fixed'>
+    <joint name='collector_plate_JOINT_9' type='revolute'>
       <parent>collector_plate</parent>
       <child>beam_left</child>
       <pose frame=''>0 0 0 0 -0 0</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <use_parent_model_frame>0</use_parent_model_frame>
+        <limit>
+          <lower>0</lower>
+          <upper>0</upper>
+          <effort>0</effort>
+          <velocity>0</velocity>
+        </limit>
+        <dynamics>
+          <damping>1</damping>
+          <friction>0</friction>
+        </dynamics>
+      </axis>
       <physics>
         <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
           <limit>
             <cfm>0</cfm>
             <erp>0.2</erp>
