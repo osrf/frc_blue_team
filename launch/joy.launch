@@ -1,7 +1,8 @@
 <launch>
-  <remap from="/joy" to="/blue/joy2"/>
+  <arg name="joystick" default="joy1"/>
   <!-- joy node -->
   <node respawn="true" pkg="joy" type="joy_node" name="joy_node" >
     <param name="dev" type="string" value="/dev/input/js0" />
+	<remap from="/joy" to="/blue/$(arg joystick)"/>
   </node>
 </launch>

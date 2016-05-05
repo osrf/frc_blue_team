@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+
+import argparse
+import os
+import subprocess
+import sys
+
+
+def main(sysargs=None):
+    parser = argparse.ArgumentParser()
+    add = parser.add_argument
+    # add('-r', '--ros-master-uri', help="The ROS_MASTER_URI to use (default is env var)")
+    # add('-g', '--gazebo-master-uri', help="The GAZEBO_MASTER_URI to use (default is env var)")
+    add('-r', '--host', help="if set it will be used as the host for the ROS and GAZEBO _MASTER_URI")
+    add('competitor_index', help="1, 2, or 3 (the joystick and camera index)")
+
+    args = parser.parse_args(sysargs)
+
+    # if args.ros_master_uri is not None:
+    #     os.environ['ROS_MASTER_URI'] = args.ros_master_uri
+    # if args.gazebo_master_uri is not None:
+    #     os.environ['GAZEBO_MASTER_URI'] = args.gazebo_master_uri
+    if args.host is not None:
+        os.environ['ROS_MASTER_URI'] = 'http://{0}:11311'.format(args.host)
+        os.environ['GAZEBO_MASTER_URI'] = 'http://{0}:11345'.format(args.host)
+
+    cmd = ['roslaunch', 'blue_team', 'operator.launch', 'index:=' + args.competitor_index]
+    print('\n=========================================================================')
+    print("Running command: '{0}'".format(' '.join(cmd)))
+    print('  - ROS_MASTER_URI:    ' + os.environ['ROS_MASTER_URI'])
+    print('  - GAZEBO_MASTER_URI: ' + os.environ['GAZEBO_MASTER_URI'])
+    print('=========================================================================\n')
+    p = subprocess.Popen(cmd)
+    try:
+        p.wait()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        p.wait()
+
+if __name__ == '__main__':
+    main()

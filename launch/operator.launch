@@ -1,0 +1,10 @@
+<launch>
+  <arg name="index" default="1" />
+
+  <include file="$(find blue_team)/launch/joy.launch">
+    <arg name="joystick" value="joy$(arg index)" />
+  </include>
+  <include file="$(find blue_team)/launch/image_view.launch">
+    <arg name="name" value="camera$(arg index)" />
+  </include>
+</launch>
