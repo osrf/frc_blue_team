@@ -469,7 +469,7 @@
       </collision>
 
     </link>
-    <link name="pocket">
+    <link name="pocket_lower">
       <pose>-0.23 0 0.0005 0 0 0</pose>
 
       <inertial>
@@ -485,14 +485,14 @@
         </inertia>
       </inertial>
 
-      <visual name="pocket">
+      <visual name="visual">
         <geometry>
           <box>
             <size>0.25 0.8 0.001</size>
           </box>
         </geometry>
       </visual>
-      <collision name="pocket">
+      <collision name="collision">
         <geometry>
           <box>
             <size>0.25 0.8 0.001</size>
@@ -517,6 +517,105 @@
       </collision>
 
     </link>
+
+    <link name="pocket_upper">
+      <pose>-0.23 0 0.0005 0 0 0</pose>
+
+      <inertial>
+        <mass>0.1</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <inertia>
+          <ixx>0.0053</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.0058</izz>
+        </inertia>
+      </inertial>
+
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.25 0.8 0.001</size>
+          </box>
+        </geometry>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.25 0.8 0.001</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.01</min_depth>
+              <max_vel>1000.0</max_vel>
+              <kp>100000000</kp>
+              <kd>1</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+
+    </link>
+
+    <link name="pocket_intermediate">
+      <pose>-0.23 0 0.0005 0 0 0</pose>
+
+      <inertial>
+        <mass>0.1</mass>
+        <pose>0 0 0 0 0 0</pose>
+        <inertia>
+          <ixx>0.0053</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.00052</iyy>
+          <iyz>0</iyz>
+          <izz>0.0058</izz>
+        </inertia>
+      </inertial>
+
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.25 0.8 0.001</size>
+          </box>
+        </geometry>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.25 0.8 0.001</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.01</min_depth>
+              <max_vel>1000.0</max_vel>
+              <kp>100000000</kp>
+              <kd>1</kd>
+            </ode>
+          </contact>
+          <friction>
+            <ode>
+              <mu>1</mu>
+              <mu2>1</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+
+    </link>
+
     <link name="pocket_side1">
       <pose>-0.225 0.4 0.03 0 0 0</pose>
 
@@ -843,10 +942,36 @@
       </axis>
     </joint>
 
+    <joint name="pocket_pocket_upper_joint" type="prismatic">
+      <pose>0 0 0 0 0 0</pose>
+      <parent>pocket_lower</parent>
+      <child>pocket_intermediate</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>0.8</upper>
+        </limit>
+      </axis>
+    </joint>
+
+    <joint name="pocket_intermediate_pocket_upper_joint" type="prismatic">
+      <pose>0 0 0 0 0 0</pose>
+      <parent>pocket_intermediate</parent>
+      <child>pocket_upper</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>0.8</upper>
+        </limit>
+      </axis>
+    </joint>
+
     <joint name="beam_pocket_joint" type="prismatic">
       <pose>0 0 0 0 0 0</pose>
       <parent>pocket_beam_left</parent>
-      <child>pocket</child>
+      <child>pocket_lower</child>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>
