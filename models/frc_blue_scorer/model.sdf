@@ -473,15 +473,15 @@
       <pose>-0.23 0 0.0005 0 0 0</pose>
 
       <inertial>
-        <mass>1</mass>
+        <mass>0.1</mass>
         <pose>0 0 0 0 0 0</pose>
         <inertia>
-          <ixx>0.00312195</ixx>
+          <ixx>0.00585</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.01359270833</iyy>
+          <iyy>0.00052</iyy>
           <iyz>0</iyz>
-          <izz>0.01641090833</izz>
+          <izz>0.0053</izz>
         </inertia>
       </inertial>
 
@@ -732,12 +732,12 @@
         <mass>1</mass>
         <pose>0 0 0 0 0 0</pose>
         <inertia>
-          <ixx>0.00312195</ixx>
+          <ixx>0.33</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.01359270833</iyy>
+          <iyy>0.33</iyy>
           <iyz>0</iyz>
-          <izz>0.01641090833</izz>
+          <izz>0.0005</izz>
         </inertia>
       </inertial>
 
@@ -833,5 +833,16 @@
       </collision>
 
     </link>
+
+    <joint name="beam_pocket_joint" type="prismatic">
+      <pose>0 0 0 0 0 0</pose>
+      <parent>pocket_beam_left</parent>
+      <child>pocket</child>
+      <axis>
+        <xyz>0 0 2</xyz>
+        <use_parent_model_frame>true</use_parent_model_frame>
+      </axis>
+    </joint>
+
   </model>
 </sdf>
