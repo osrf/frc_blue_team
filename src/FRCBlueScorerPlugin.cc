@@ -55,7 +55,7 @@ void InternalJointController::Update(const sensor_msgs::Joy &_joyMsg)
 
   if (static_cast<int>(_joyMsg.buttons.size()) <= this->buttonIndex)
   {
-    std::cerr << "Unexpected axis size" << std::endl;
+    //std::cerr << "Unexpected axis size" << std::endl;
     return;
   }
 
@@ -63,14 +63,12 @@ void InternalJointController::Update(const sensor_msgs::Joy &_joyMsg)
 
   // Decide if we have to change the target.
   double currentValue = _joyMsg.buttons.at(this->buttonIndex);
-  if ((std::abs(currentValue - this->lastButtonValue) >= 0.5) &&
+  if ((ignition::math::equal(currentValue, 1.0)) &&
       (now - this->lastToggleTime > common::Time(0.5)))
   {
     this->Toggle();
     this->lastToggleTime = now;
-    this->lastButtonValue = currentValue;
   }
-
 
   auto dt = now - this->lastControllerUpdate;
   auto currentPose = this->joint->GetAngle(0);
@@ -214,6 +212,5 @@ void FRCBlueScorerPlugin::Update(const common::UpdateInfo & /*_info*/)
 /////////////////////////////////////////////////
 void FRCBlueScorerPlugin::OnData(const sensor_msgs::Joy::ConstPtr& _msg)
 {
-  std::cout << "Joy received" << std::endl;
   this->joyMsg = *_msg;
 }

@@ -60,8 +60,6 @@ namespace gazebo
 
     private: int buttonIndex;
 
-    private: double lastButtonValue = 0;
-
     private: gazebo::common::Time lastToggleTime;
 
     /// \brief Time of the last update.

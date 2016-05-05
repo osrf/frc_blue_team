@@ -11,15 +11,71 @@
     </plugin>
 
     <plugin name='FRCBlueScorerPlugin' filename='libFRCBlueScorerPlugin.so'>
+
+      <topic>/blue/joy3</topic>
       <joint>
-        <topic>/blue/joy3</topic>
-        <name>joint1</name>
+        <name>frc2016_blue_scorer::collector_gate</name>
         <lower_limit>0</lower_limit>
-        <upper_limit>0.5</upper_limit>
+        <upper_limit>0.3</upper_limit>
         <button_index>0</button_index>
-        <p_gain>10</p_gain>
-        <d_gain>20</d_gain>
+        <p_gain>100</p_gain>
+        <d_gain>0</d_gain>
       </joint>
+
+      <joint>
+        <name>frc2016_blue_scorer::pocket_gate</name>
+        <lower_limit>0</lower_limit>
+        <upper_limit>0.3</upper_limit>
+        <button_index>1</button_index>
+        <p_gain>250</p_gain>
+        <d_gain>0</d_gain>
+      </joint>
+
+      <joint>
+        <name>frc2016_blue_scorer::elevator_beam_lift</name>
+        <lower_limit>0</lower_limit>
+        <upper_limit>0.8</upper_limit>
+        <button_index>3</button_index>
+        <p_gain>1200</p_gain>
+        <d_gain>0</d_gain>
+      </joint>
+
+      <joint>
+        <name>frc2016_blue_scorer::elevator_beam_lift_2</name>
+        <lower_limit>0</lower_limit>
+        <upper_limit>0.8</upper_limit>
+        <button_index>3</button_index>
+        <p_gain>1200</p_gain>
+        <d_gain>0</d_gain>
+      </joint>
+
+      <joint>
+        <name>frc2016_blue_scorer::elevator_beam_lift_3</name>
+        <lower_limit>0</lower_limit>
+        <upper_limit>0.8</upper_limit>
+        <button_index>3</button_index>
+        <p_gain>1200</p_gain>
+        <d_gain>0</d_gain>
+      </joint>
+
+      <joint>
+        <name>frc2016_blue_scorer::pocket_slider</name>
+        <lower_limit>0</lower_limit>
+        <upper_limit>1</upper_limit>
+        <button_index>2</button_index>
+        <p_gain>600</p_gain>
+        <d_gain>0</d_gain>
+      </joint>
+
+      <joint>
+        <name>frc2016_blue_scorer::score_gate</name>
+        <lower_limit>0</lower_limit>
+        <upper_limit>1.6</upper_limit>
+        <button_index>7</button_index>
+        <p_gain>10</p_gain>
+        <d_gain>0</d_gain>
+      </joint>
+
     </plugin>
   </model>
 </sdf>
