@@ -2333,7 +2333,7 @@
         </ode>
       </physics>
     </joint>
-    <joint name='collector_plate_gate' type='prismatic'>
+    <joint name='collector_gate' type='prismatic'>
       <parent>collector_plate</parent>
       <child>platform_side4</child>
       <pose frame=''>0 0 0 0 -0 0</pose>
