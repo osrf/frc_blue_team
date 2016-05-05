@@ -149,12 +149,16 @@ void FRCBlueDiffDrivePlugin::Update(const common::UpdateInfo & /*_info*/)
   if (this->joyMsg.axes.empty())
     return;
 
+  if (this->joyMsg.buttons.empty())
+    return;
+
   double boostFactor = 1;
   // ps controller
-  if (this->joyMsg.buttons.size() > 11)
-  {
+  if (this->joyMsg.buttons.size() > 12)
     boostFactor = this->joyMsg.buttons.at(12) ? 2 : 1;
-  }
+  // logitech
+  else
+    boostFactor = this->joyMsg.buttons.at(3) ? 2 : 1;
 
   double turn = -this->joyMsg.axes.at(0);
   double vr = -0.1 * this->joyMsg.axes.at(1) * this->torque * boostFactor;

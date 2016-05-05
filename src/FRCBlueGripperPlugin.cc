@@ -112,20 +112,27 @@ void FRCBlueGripperPlugin::Update(const common::UpdateInfo & /*_info*/)
 {
   ros::spinOnce();
 
-  if (this->joyMsg.axes.empty())
+  if (this->joyMsg.buttons.empty())
     return;
 
   double grip = 0;
   double lift = 0;
 
   // ps controller
-  if (this->joyMsg.buttons.size() > 11)
+  if (this->joyMsg.buttons.size() > 12)
   {
+    // X
     grip = this->joyMsg.buttons.at(14);
+    // square
     lift = this->joyMsg.buttons.at(15);
   }
+  // logitech
   else
   {
+    // A
+    grip = this->joyMsg.buttons.at(1);
+    // X
+    lift = this->joyMsg.buttons.at(0);
   }
 
   if (grip)
