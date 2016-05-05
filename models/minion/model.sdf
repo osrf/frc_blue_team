@@ -32,9 +32,9 @@
             <uri>file://media/materials/scripts/gazebo.material</uri>
             <name>Gazebo/Grey</name>
           </script>
-          <ambient>1 1 0 1</ambient>
-          <diffuse>1 1 0 1</diffuse>
-          <specular>1 1 0 1</specular>
+          <ambient>0.96 0.86 0.31 1</ambient>
+          <diffuse>0.96 0.86 0.31 1</diffuse>
+          <specular>0.96 0.86 0.31 1</specular>
           <emissive>0 0 0 1</emissive>
           <shader type='vertex'>
             <normal_map>__default__</normal_map>
@@ -1207,7 +1207,7 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>10</damping>
+          <damping>30</damping>
           <friction>0</friction>
         </dynamics>
       </axis>
@@ -1240,7 +1240,7 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>10</damping>
+          <damping>30</damping>
           <friction>0</friction>
         </dynamics>
       </axis>
