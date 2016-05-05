@@ -121,6 +121,8 @@ void FRCBlueDiffDrivePlugin::Load(physics::ModelPtr _model,
   this->n = new ros::NodeHandle();
   this->sub = this->n->subscribe(this->topic, 1000,
       &FRCBlueDiffDrivePlugin::OnData, this);
+
+  std::cout << "Diff drive plugin loaded!" << std::endl;
 }
 
 /////////////////////////////////////////////////

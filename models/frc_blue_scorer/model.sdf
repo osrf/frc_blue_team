@@ -93,14 +93,14 @@
     </link>
     <link name='base'>
       <inertial>
-        <mass>10.2329</mass>
+        <mass>30.2329</mass>
         <inertia>
-          <ixx>0.637039</ixx>
+          <ixx>1.837039</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.455502</iyy>
+          <iyy>1.355502</iyy>
           <iyz>0</iyz>
-          <izz>1.09248</izz>
+          <izz>3.09248</izz>
         </inertia>
         <pose frame=''>0 0 0 0 -0 0</pose>
       </inertial>
@@ -2364,7 +2364,7 @@
         <use_parent_model_frame>0</use_parent_model_frame>
         <limit>
           <lower>0</lower>
-          <upper>0.3</upper>
+          <upper>0.6</upper>
           <effort>-1</effort>
           <velocity>-1</velocity>
         </limit>
@@ -2398,7 +2398,7 @@
         <use_parent_model_frame>0</use_parent_model_frame>
         <limit>
           <lower>0</lower>
-          <upper>0.82</upper>
+          <upper>1.01</upper>
           <effort>-1</effort>
           <velocity>-1</velocity>
         </limit>
@@ -2432,7 +2432,7 @@
         <use_parent_model_frame>0</use_parent_model_frame>
         <limit>
           <lower>0</lower>
-          <upper>0.82</upper>
+          <upper>1.01</upper>
           <effort>-1</effort>
           <velocity>-1</velocity>
         </limit>
@@ -2466,7 +2466,7 @@
         <use_parent_model_frame>0</use_parent_model_frame>
         <limit>
           <lower>0</lower>
-          <upper>0.82</upper>
+          <upper>1.01</upper>
           <effort>-1</effort>
           <velocity>-1</velocity>
         </limit>
@@ -2585,7 +2585,7 @@
         <use_parent_model_frame>0</use_parent_model_frame>
         <limit>
           <lower>0</lower>
-          <upper>0.3</upper>
+          <upper>0.6</upper>
           <effort>-1</effort>
           <velocity>-1</velocity>
         </limit>

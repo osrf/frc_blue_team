@@ -40,6 +40,19 @@ install(TARGETS ${frc_blue_robot_plugin_name}
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin)
 
+# Create the libFRCBlueGripperPlugin.so library.
+set(frc_blue_gripper_plugin_name FRCBlueGripperPlugin)
+add_library(${frc_blue_gripper_plugin_name} src/FRCBlueGripperPlugin.cc)
+target_link_libraries(${frc_blue_gripper_plugin_name}
+  ${GAZEBO_LIBRARIES}
+  ${roscpp_LIBRARIES}
+  ${sensor_msgs_LIBRARIES}
+)
+install(TARGETS ${frc_blue_gripper_plugin_name}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin)
+
 # Create the libFRCBlueCameraPlugin.so library.
 set(frc_blue_camera_plugin_name FRCBlueCameraPlugin)
 add_library(${frc_blue_camera_plugin_name} src/FRCBlueCameraPlugin.cc)
@@ -67,20 +80,19 @@ install(TARGETS ${frc_blue_diff_drive_plugin_name}
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin)
 
-# Create the libFRCBlueGripperPlugin.so library.
-set(frc_blue_gripper_plugin_name FRCBlueGripperPlugin)
-add_library(${frc_blue_gripper_plugin_name} src/FRCBlueGripperPlugin.cc)
-target_link_libraries(${frc_blue_gripper_plugin_name}
+# Create the libFRCBlueScorerPlugin.so library.
+set(frc_blue_scorer_plugin_name FRCBlueScorerPlugin)
+add_library(${frc_blue_scorer_plugin_name} src/FRCBlueScorerPlugin.cc)
+target_link_libraries(${frc_blue_scorer_plugin_name}
   ${GAZEBO_LIBRARIES}
   ${roscpp_LIBRARIES}
   ${sensor_msgs_LIBRARIES}
 )
 
-install(TARGETS ${frc_blue_gripper_plugin_name}
+install(TARGETS ${frc_blue_scorer_plugin_name}
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin)
-
 
 # Install all the world files
 install(DIRECTORY worlds/
