@@ -47,11 +47,8 @@ void FRCBlueGripperPlugin::Load(physics::ModelPtr _model,
   GZ_ASSERT(_sdf, "FRCBlueGripperPlugin _sdf pointer is NULL");
   this->model = _model;
 
-
-  for (auto j : _model->GetJoints())
-  {
-    std::cerr << j->GetName() << std::endl;
-  }
+//  for (auto j : _model->GetJoints())
+//    std::cerr << j->GetName() << std::endl;
 
   // diff drive params
   if (_sdf->HasElement("left"))
@@ -120,14 +117,12 @@ void FRCBlueGripperPlugin::Update(const common::UpdateInfo & /*_info*/)
 
   double grip = 0;
   double lift = 0;
-  double extra = 0;
 
   // ps controller
   if (this->joyMsg.buttons.size() > 11)
   {
     grip = this->joyMsg.buttons.at(14);
     lift = this->joyMsg.buttons.at(15);
-    extra = this->joyMsg.buttons.at(12);
   }
   else
   {

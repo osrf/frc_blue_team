@@ -8,7 +8,7 @@
 
     <plugin name='diff_drive' filename='libFRCBlueDiffDrivePlugin.so'>
       <topic>/blue/joy2</topic>
-      <torque>100</torque>
+      <torque>130</torque>
       <turn_rate>15</turn_rate>
     </plugin>
 
