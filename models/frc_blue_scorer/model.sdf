@@ -9,12 +9,12 @@
         <mass>1</mass>
         <pose>0 0 0.06738 0 0 0</pose>
         <inertia>
-          <ixx>0.00312195</ixx>
+          <ixx>0.0533</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.01359270833</iyy>
+          <iyy>0.0208</iyy>
           <iyz>0</iyz>
-          <izz>0.01641090833</izz>
+          <izz>0.074</izz>
         </inertia>
       </inertial>
 
@@ -834,12 +834,25 @@
 
     </link>
 
+    <joint name="beam_pocket_chassis" type="fixed">
+      <pose>0 0 0 0 0 0</pose>
+      <parent>collector_plate</parent>
+      <child>pocket_beam_left</child>
+      <axis>
+        <xyz>0 0 0</xyz>
+      </axis>
+    </joint>
+
     <joint name="beam_pocket_joint" type="prismatic">
       <pose>0 0 0 0 0 0</pose>
       <parent>pocket_beam_left</parent>
       <child>pocket</child>
       <axis>
-        <xyz>0 0 2</xyz>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>0</lower>
+          <upper>2</upper>
+        </limit>
         <use_parent_model_frame>true</use_parent_model_frame>
       </axis>
     </joint>
