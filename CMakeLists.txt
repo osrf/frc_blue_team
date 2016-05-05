@@ -19,6 +19,10 @@ include_directories(
   ${sensor_msgs_INCLUDE_DIRS}
 )
 
+link_directories(
+  ${GAZEBO_LIBRARY_DIRS}
+)
+
 catkin_package()
 
 catkin_add_env_hooks(99_blue_team_setup SHELLS sh)
