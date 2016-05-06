@@ -93,14 +93,14 @@
     </link>
     <link name='base'>
       <inertial>
-        <mass>30.2329</mass>
+        <mass>10.2329</mass>
         <inertia>
-          <ixx>1.837039</ixx>
+          <ixx>0.637039</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>1.355502</iyy>
+          <iyy>0.455502</iyy>
           <iyz>0</iyz>
-          <izz>3.09248</izz>
+          <izz>1.09248</izz>
         </inertia>
         <pose frame=''>0 0 0 0 -0 0</pose>
       </inertial>
