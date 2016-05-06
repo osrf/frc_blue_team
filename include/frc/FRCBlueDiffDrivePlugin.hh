@@ -25,10 +25,11 @@
 #include <sensor_msgs/Joy.h>
 #pragma GCC diagnostic pop
 #include <sdf/sdf.hh>
-#include "gazebo/common/Plugin.hh"
-#include "gazebo/common/UpdateInfo.hh"
-#include "gazebo/physics/PhysicsTypes.hh"
-#include "gazebo/transport/TransportTypes.hh"
+#include <gazebo/common/PID.hh>
+#include <gazebo/common/Plugin.hh>
+#include <gazebo/common/UpdateInfo.hh>
+#include <gazebo/physics/PhysicsTypes.hh>
+#include <gazebo/transport/TransportTypes.hh>
 
 namespace gazebo
 {
@@ -79,6 +80,15 @@ namespace gazebo
     /// \brief Revolute joint for moving the left wheel of the vehicle.
     private: physics::JointPtr leftJoint;
 
+    // \breif wheel PID controller
+    private: common::PID leftPID;
+
+    // \breif wheel PID controller
+    private: common::PID rightPID;
+
+    // \breif save pointer to the world
+    private: physics::WorldPtr world;
+
     /// \brief Revolute joint for moving the right wheel of the vehicle.
     private: physics::JointPtr rightJoint;
 
@@ -96,6 +106,9 @@ namespace gazebo
 
     /// \brief Max turn rate of wheels
     private: double turnRate;
+
+    /// \brief last time update was called
+    private: double lastTime;
   };
 
 }

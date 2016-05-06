@@ -49,6 +49,7 @@ void FRCBlueDiffDrivePlugin::Load(physics::ModelPtr _model,
   GZ_ASSERT(_model, "FRCBlueDiffDrivePlugin _model pointer is NULL");
   GZ_ASSERT(_sdf, "FRCBlueDiffDrivePlugin _sdf pointer is NULL");
   this->model = _model;
+  this->world = this->model->GetWorld();
 
   this->wheelSpeed[LEFT] = this->wheelSpeed[RIGHT] = 0;
   this->wheelSeparation = 1.0;
@@ -141,6 +142,12 @@ void FRCBlueDiffDrivePlugin::Init()
   ignition::math::Box bb = parent->GetBoundingBox().Ign();
   // This assumes that the largest dimension of the wheel is the diameter
   this->wheelRadius = bb.Size().Max() * 0.5;
+
+  // below are stuff for PID control
+  // p, i, d, imax, imin, cmdmax, cmdmin
+  this->leftPID.Init(10, 0, 0, 0, 0, 10, -10);
+  this->rightPID.Init(10, 0, 0, 0, 0, 10, -10);
+  this->lastTime = this->world->GetSimTime().Double();
 }
 
 /////////////////////////////////////////////////
@@ -177,8 +184,28 @@ void FRCBlueDiffDrivePlugin::Update(const common::UpdateInfo & /*_info*/)
   double rightVelDesired =
       (this->wheelSpeed[RIGHT] / this->wheelRadius);
 
-  this->leftJoint->SetForce(0, leftVelDesired);
-  this->rightJoint->SetForce(0, rightVelDesired);
+  double leftVelCurrent = this->leftJoint->GetVelocity(0);
+  double rightVelCurrent = this->rightJoint->GetVelocity(0);
+  double leftVelError = leftVelCurrent - leftVelDesired;
+  double rightVelError = rightVelCurrent - rightVelDesired;
+  double currentTime = this->world->GetSimTime().Double();
+  double dt = currentTime - this->lastTime;
+  this->lastTime = currentTime;
+  double leftCmd = this->leftPID.Update(leftVelError, dt);
+  double rightCmd = this->rightPID.Update(rightVelError, dt);
+
+  gzerr << "vel left[" << leftVelDesired
+        << "] right[" << rightVelDesired
+        << "] lcur[" << rightVelCurrent
+        << "] rcur[" << rightVelCurrent
+        << "] lerr[" << rightVelError
+        << "] rerr[" << rightVelError
+        << "] lcmd[" << rightCmd
+        << "] rcmd[" << rightCmd
+        << "]\n";
+
+  this->leftJoint->SetForce(0, leftCmd);
+  this->rightJoint->SetForce(0, rightCmd);
 }
 
 /////////////////////////////////////////////////
