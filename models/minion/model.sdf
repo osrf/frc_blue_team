@@ -80,12 +80,10 @@
             <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
             <collide_bitmask>1</collide_bitmask>
             <ode>
-              <soft_cfm>0</soft_cfm>
-              <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+8</kp>
               <kd>1</kd>
-              <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <max_vel>10000.0</max_vel>
+              <min_depth>0.002</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
@@ -376,12 +374,10 @@
             <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
             <collide_bitmask>1</collide_bitmask>
             <ode>
-              <soft_cfm>0</soft_cfm>
-              <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+8</kp>
               <kd>1</kd>
-              <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <max_vel>10000.0</max_vel>
+              <min_depth>0.002</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
