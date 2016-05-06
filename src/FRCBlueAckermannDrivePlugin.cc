@@ -112,6 +112,8 @@ void FRCBlueAckermannDrivePlugin::Load(physics::ModelPtr _model,
     return;
   }
 
+  this->flipSteering = false;
+  this->lastToggleTime = gazebo::physics::get_world()->GetSimTime();
 
   // Listen to the update event. This event is broadcast every
   // simulation iteration.
@@ -168,6 +170,34 @@ void FRCBlueAckermannDrivePlugin::Update(const common::UpdateInfo & /*_info*/)
   if (this->joyMsg.buttons.empty())
     return;
 
+
+  int buttonIndex;
+  // ps controller
+  if (this->joyMsg.buttons.size() > 12)
+  {
+    // X
+    buttonIndex = 14;
+  }
+  // logitech wireless
+  else
+  {
+    // A
+    buttonIndex = 1;
+  }
+
+  double buttonValue = joyMsg.buttons.at(buttonIndex);
+  auto now = gazebo::physics::get_world()->GetSimTime();
+  if ((ignition::math::equal(buttonValue, 1.0)) &&
+      (now - this->lastToggleTime > common::Time(0.5)))
+  {
+    //std::cout << "Flipping steering" << std::endl;
+    this->flipSteering = !this->flipSteering;
+    this->lastToggleTime = now;
+  }
+
+
+
+
   double boostFactor = 1;
   // ps controller
   if (this->joyMsg.buttons.size() > 12)
@@ -178,6 +208,12 @@ void FRCBlueAckermannDrivePlugin::Update(const common::UpdateInfo & /*_info*/)
 
   double steerAngle = this->joyMsg.axes.at(0);
   double vr = this->joyMsg.axes.at(1)* this->torque * boostFactor;
+
+  if (this->flipSteering)
+  {
+    steerAngle *= -1.0;
+    vr *= -1.0;
+  }
 
   double stepTime = 0.005; // ToDo: use actual step calculated from time diff
   double currentLeftAngle = this->steeringJoints[LEFT]->GetAngle(0).Radian();
@@ -203,9 +239,15 @@ void FRCBlueAckermannDrivePlugin::Update(const common::UpdateInfo & /*_info*/)
   double leftEffort = (leftVelDesired - currentLeftVel) / stepTime;
   double rightEffort = (rightVelDesired - currentRightVel) / stepTime;
   */
+  double maxVelocity = 0.005;
+  if (std::abs(steerAngle) > 0.2) {
+    maxVelocity = 0.0001;
+    leftVelDesired /= 1000;
+    rightVelDesired /= 1000;
+  }
 
-  this->leftJoint->SetVelocityLimit(0, 0.5);
-  this->rightJoint->SetVelocityLimit(0, 0.5);
+  this->leftJoint->SetVelocityLimit(0, maxVelocity); // does this even do anything..?
+  this->rightJoint->SetVelocityLimit(0, maxVelocity);
   this->leftJoint->SetForce(0, leftVelDesired);
   this->rightJoint->SetForce(0, rightVelDesired);
 

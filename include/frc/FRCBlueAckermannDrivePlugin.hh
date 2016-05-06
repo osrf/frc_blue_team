@@ -107,8 +107,11 @@ namespace gazebo
     /// \brief Max torque to apply to steering joints
     private: double turnTorque;
 
-    /// \brief Time of the last update.
-    private: gazebo::common::Time lastUpdateTime;
+    /// \brief Whether or not to flip the steering controls
+    private: bool flipSteering;
+
+    /// \brief Time of the last button toggle.
+    private: gazebo::common::Time lastToggleTime;
   };
 
 }
