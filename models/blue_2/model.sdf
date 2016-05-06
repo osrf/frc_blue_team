@@ -8,8 +8,8 @@
 
     <plugin name='diff_drive' filename='libFRCBlueDiffDrivePlugin.so'>
       <topic>/blue/joy2</topic>
-      <torque>1</torque>
-      <turn_rate>1</turn_rate>
+      <torque>2.0</torque>
+      <turn_rate>1.3</turn_rate>
     </plugin>
 
     <plugin name='gripper' filename='libFRCBlueGripperPlugin.so'>
