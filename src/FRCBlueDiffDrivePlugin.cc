@@ -145,8 +145,8 @@ void FRCBlueDiffDrivePlugin::Init()
 
   // below are stuff for PID control
   // p, i, d, imax, imin, cmdmax, cmdmin
-  this->leftPID.Init(10, 0, 0, 0, 0, 10, -10);
-  this->rightPID.Init(10, 0, 0, 0, 0, 10, -10);
+  this->leftPID.Init(10, 0, 0, 0, 0, 200, -200);
+  this->rightPID.Init(10, 0, 0, 0, 0, 200, -200);
   this->lastTime = this->world->GetSimTime().Double();
 }
 
@@ -170,7 +170,7 @@ void FRCBlueDiffDrivePlugin::Update(const common::UpdateInfo & /*_info*/)
     boostFactor = this->joyMsg.buttons.at(3) ? 2 : 1;
 
   double turn = -this->joyMsg.axes.at(0);
-  double vr = -0.1 * this->joyMsg.axes.at(1) * this->torque * boostFactor;
+  double vr = -1 * this->joyMsg.axes.at(1) * this->torque * boostFactor;
 
   double va = turn * this->turnRate;
 
@@ -194,15 +194,15 @@ void FRCBlueDiffDrivePlugin::Update(const common::UpdateInfo & /*_info*/)
   double leftCmd = this->leftPID.Update(leftVelError, dt);
   double rightCmd = this->rightPID.Update(rightVelError, dt);
 
-  gzerr << "vel left[" << leftVelDesired
-        << "] right[" << rightVelDesired
-        << "] lcur[" << rightVelCurrent
-        << "] rcur[" << rightVelCurrent
-        << "] lerr[" << rightVelError
-        << "] rerr[" << rightVelError
-        << "] lcmd[" << rightCmd
-        << "] rcmd[" << rightCmd
-        << "]\n";
+  // gzerr << "vel left[" << leftVelDesired
+  //       << "] right[" << rightVelDesired
+  //       << "] lcur[" << rightVelCurrent
+  //       << "] rcur[" << rightVelCurrent
+  //       << "] lerr[" << rightVelError
+  //       << "] rerr[" << rightVelError
+  //       << "] lcmd[" << rightCmd
+  //       << "] rcmd[" << rightCmd
+  //       << "]\n";
 
   this->leftJoint->SetForce(0, leftCmd);
   this->rightJoint->SetForce(0, rightCmd);
