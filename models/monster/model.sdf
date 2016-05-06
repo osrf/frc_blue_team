@@ -76,8 +76,8 @@
         <surface>
           <friction>
             <ode>
-              <mu>1</mu>
-              <mu2>1</mu2>
+              <mu>0.1</mu>
+              <mu2>0.1</mu2>
               <fdir1>0 0 0</fdir1>
               <slip1>0</slip1>
               <slip2>0</slip2>
@@ -217,12 +217,10 @@
             <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
             <collide_bitmask>1</collide_bitmask>
             <ode>
-              <soft_cfm>0</soft_cfm>
-              <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+6</kp>
               <kd>1</kd>
-              <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <max_vel>10000.0</max_vel>
+              <min_depth>0.002</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
@@ -333,12 +331,10 @@
             <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
             <collide_bitmask>1</collide_bitmask>
             <ode>
-              <soft_cfm>0</soft_cfm>
-              <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+6</kp>
               <kd>1</kd>
-              <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <max_vel>10000.0</max_vel>
+              <min_depth>0.002</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
@@ -466,12 +462,10 @@
             <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
             <collide_bitmask>1</collide_bitmask>
             <ode>
-              <soft_cfm>0</soft_cfm>
-              <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+6</kp>
               <kd>1</kd>
-              <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <max_vel>10000.0</max_vel>
+              <min_depth>0.002</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
@@ -582,12 +576,10 @@
             <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
             <collide_bitmask>1</collide_bitmask>
             <ode>
-              <soft_cfm>0</soft_cfm>
-              <soft_erp>0.2</soft_erp>
-              <kp>1e+13</kp>
+              <kp>1e+6</kp>
               <kd>1</kd>
-              <max_vel>0.01</max_vel>
-              <min_depth>0</min_depth>
+              <max_vel>10000.0</max_vel>
+              <min_depth>0.002</min_depth>
             </ode>
             <bullet>
               <split_impulse>1</split_impulse>
@@ -634,12 +626,13 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0</damping>
+          <damping>0.01</damping>
           <friction>0</friction>
         </dynamics>
       </axis>
       <physics>
         <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
           <limit>
             <cfm>0</cfm>
             <erp>0.2</erp>
@@ -667,12 +660,13 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0</damping>
+          <damping>0.1</damping>
           <friction>0</friction>
         </dynamics>
       </axis>
       <physics>
         <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
           <limit>
             <cfm>0</cfm>
             <erp>0.2</erp>
@@ -700,12 +694,13 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0</damping>
+          <damping>0.01</damping>
           <friction>0</friction>
         </dynamics>
       </axis>
       <physics>
         <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
           <limit>
             <cfm>0</cfm>
             <erp>0.2</erp>
@@ -733,12 +728,13 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0</damping>
+          <damping>0.1</damping>
           <friction>0</friction>
         </dynamics>
       </axis>
       <physics>
         <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
           <limit>
             <cfm>0</cfm>
             <erp>0.2</erp>
@@ -766,12 +762,13 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0</damping>
+          <damping>1</damping>
           <friction>0</friction>
         </dynamics>
       </axis>
       <physics>
         <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
           <limit>
             <cfm>0</cfm>
             <erp>0.2</erp>
@@ -799,12 +796,13 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0</damping>
+          <damping>0.01</damping>
           <friction>0</friction>
         </dynamics>
       </axis>
       <physics>
         <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
           <limit>
             <cfm>0</cfm>
             <erp>0.2</erp>
@@ -832,12 +830,13 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0</damping>
+          <damping>0.1</damping>
           <friction>0</friction>
         </dynamics>
       </axis>
       <physics>
         <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
           <limit>
             <cfm>0</cfm>
             <erp>0.2</erp>
@@ -865,12 +864,13 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0</damping>
+          <damping>0.01</damping>
           <friction>0</friction>
         </dynamics>
       </axis>
       <physics>
         <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
           <limit>
             <cfm>0</cfm>
             <erp>0.2</erp>
@@ -898,12 +898,13 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0</damping>
+          <damping>0.1</damping>
           <friction>0</friction>
         </dynamics>
       </axis>
       <physics>
         <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
           <limit>
             <cfm>0</cfm>
             <erp>0.2</erp>
@@ -931,12 +932,13 @@
         <dynamics>
           <spring_reference>0</spring_reference>
           <spring_stiffness>0</spring_stiffness>
-          <damping>0</damping>
+          <damping>1</damping>
           <friction>0</friction>
         </dynamics>
       </axis>
       <physics>
         <ode>
+          <implicit_spring_damper>1</implicit_spring_damper>
           <limit>
             <cfm>0</cfm>
             <erp>0.2</erp>
@@ -958,7 +960,7 @@
       <left_steering_joint>left_steering_joint</left_steering_joint>
       <right_steering_joint>right_steering_joint</right_steering_joint>
       <topic>/blue/joy2</topic>
-      <torque>80</torque>
+      <torque>160</torque>
       <turn_rate>.1</turn_rate>
       <robotNamespace>/</robotNamespace>
     </plugin>

@@ -89,6 +89,8 @@ void FRCBlueCameraPlugin::Update(const common::UpdateInfo & /*_info*/)
   double right = 0;
   double down = 0;
   double up = 0;
+  double zoomIn = 0;
+  double zoomOut = 0;
 
   // ps controller
   if (this->joyMsg.buttons.size() > 11)
@@ -108,6 +110,10 @@ void FRCBlueCameraPlugin::Update(const common::UpdateInfo & /*_info*/)
     // r2
     up = this->joyMsg.buttons.at(9);
 
+    // zoom in
+    zoomIn = this->joyMsg.buttons.at(4);
+    // zoom out
+    zoomOut = this->joyMsg.buttons.at(6);
   }
   // logitech
   else
@@ -126,6 +132,11 @@ void FRCBlueCameraPlugin::Update(const common::UpdateInfo & /*_info*/)
     down = (this->joyMsg.axes.at(2) < -0.5) ? 1 : 0;
     // r2
     up = (this->joyMsg.axes.at(5) < -0.5) ? 1 : 0;
+
+    // zoom in
+    zoomIn = this->joyMsg.buttons.at(4);
+    // zoom out
+    zoomOut = this->joyMsg.buttons.at(6);
   }
 
   double y = (left-right) * posStep;
@@ -134,6 +145,15 @@ void FRCBlueCameraPlugin::Update(const common::UpdateInfo & /*_info*/)
   double yaw = pan * rotStep;
   double pitch = tilt * rotStep;
 
+  // double hfov = this->camera->GetHFOV().Radian();
+  if (zoomIn > 0)
+  {
+    // lower hfov
+  }
+  else if (zoomOut > 0)
+  {
+    // increase hfov
+  }
 
   // Process last message.
   ignition::math::Vector3d yPos(0.0, y, 0);
