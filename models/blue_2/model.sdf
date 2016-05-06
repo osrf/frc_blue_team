@@ -3,8 +3,20 @@
   <model name='blue_2'>
 
     <include>
-      <uri>model://monster</uri>
+      <uri>model://minion</uri>
     </include>
 
+    <plugin name='diff_drive' filename='libFRCBlueDiffDrivePlugin.so'>
+      <topic>/blue/joy2</topic>
+      <torque>1</torque>
+      <turn_rate>1</turn_rate>
+    </plugin>
+
+    <plugin name='gripper' filename='libFRCBlueGripperPlugin.so'>
+      <topic>/blue/joy2</topic>
+      <left>minion::link_0_0_JOINT_3</left>
+      <right>minion::link_0_0_JOINT_2</right>
+      <up>minion::link_1_JOINT_4</up>
+    </plugin>
   </model>
 </sdf>
