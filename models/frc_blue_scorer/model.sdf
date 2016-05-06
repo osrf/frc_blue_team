@@ -29,10 +29,18 @@
         <cast_shadows>1</cast_shadows>
         <transparency>0</transparency>
         <material>
+          <lighting>1</lighting>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Grey</name>
+          </script>
+          <ambient>0.2 0.2 0.2 1</ambient>
+          <diffuse>0.2 0.2 0.2 1</diffuse>
+          <specular>0.2 0.2 0.2 1</specular>
+          <emissive>0.2 0.2 0.2 1</emissive>
           <shader type='vertex'>
             <normal_map>__default__</normal_map>
           </shader>
-          <emissive>0 0 0 1</emissive>
         </material>
       </visual>
       <collision name='platform'>
@@ -1452,7 +1460,14 @@
           <shader type='vertex'>
             <normal_map>__default__</normal_map>
           </shader>
-          <emissive>0 0 0 1</emissive>
+          <emissive>0.674 0.427 0.054 1</emissive>
+          <ambient>0.674 0.427 0.054 0</ambient>
+          <diffuse>0.674 0.427 0.054 0</diffuse>
+          <specular>0.674 0.427 0.054 0</specular>
+          <script>
+            <name>ModelPreview_7::frc2016_blue_scorer::pocket::frc2016_blue_scorer::pocket_MATERIAL_</name>
+            <uri>__default__</uri>
+          </script>
         </material>
       </visual>
       <collision name='pocket'>
@@ -2223,10 +2238,10 @@
             <uri>file://media/materials/scripts/gazebo.material</uri>
             <name>Gazebo/Grey</name>
           </script>
-          <ambient>0.3 0.3 0.3 1</ambient>
-          <diffuse>0.7 0.7 0.7 1</diffuse>
-          <specular>0.01 0.01 0.01 1</specular>
-          <emissive>0 0 0 1</emissive>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0.1 0.1 0.1 1</emissive>
           <shader type='vertex'>
             <normal_map>__default__</normal_map>
           </shader>
@@ -2321,10 +2336,10 @@
             <uri>file://media/materials/scripts/gazebo.material</uri>
             <name>Gazebo/Grey</name>
           </script>
-          <ambient>0.3 0.3 0.3 1</ambient>
-          <diffuse>0.7 0.7 0.7 1</diffuse>
-          <specular>0.01 0.01 0.01 1</specular>
-          <emissive>0 0 0 1</emissive>
+          <ambient>0.1 0.1 0.1 1</ambient>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+          <specular>0.1 0.1 0.1 1</specular>
+          <emissive>0.1 0.1 0.1 1</emissive>
           <shader type='vertex'>
             <normal_map>__default__</normal_map>
           </shader>
